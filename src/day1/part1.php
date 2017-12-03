@@ -9,4 +9,18 @@ declare(strict_types=1);
  * @copyright  Copyright (c) 2017
  */
 
-$input = getInput();
+$input = str_split((string) getInput());
+
+$sum = 0;
+
+foreach ($input as $key => $value) {
+    if (isset($input[$key + 1])) {
+        if ($value === $input[$key + 1]) {
+            $sum += $value;
+        }
+    } else if ($value === $input[0]) {
+        $sum += $value;
+    }
+}
+
+return $sum;
