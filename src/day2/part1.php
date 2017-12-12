@@ -9,13 +9,12 @@ declare(strict_types=1);
  * @copyright  Copyright (c) 2017
  */
 
-$input = getInput();
+$input = explode("\n", getInput());
+$sum = 0;
 
-$checksum = 0;
-
-foreach (explode("\n", $input) as $line) {
-    preg_match_all('/[0-9]+/', $line, $cols);
-    $checksum += max($cols[0]) - min($cols[0]);
+foreach ($input as $row) {
+    preg_match_all('!\d+!', $row, $matches);
+    $sum += (max($matches[0]) - min($matches[0]));
 }
 
-return $checksum;
+return $sum;

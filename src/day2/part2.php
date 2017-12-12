@@ -9,27 +9,25 @@ declare(strict_types=1);
  * @copyright  Copyright (c) 2017
  */
 
-$input = getInput();
+$input = explode("\n", getInput());
+$sum = 0;
 
-$checksum = 0;
-
-foreach (explode("\n", $input) as $line) {
-    preg_match_all('/[0-9]+/', $line, $cols);
-
-    for ($i = 0; $i < count($cols[0]); $i++) {
-        for ($j = 0; $j < count($cols[0]); $j++) {
-            if ($i === $j) {
+foreach ($input as $row) {
+    preg_match_all('!\d+!', $row, $matches);
+    for ($a = 0; $a < count($matches[0]); $a++) {
+        for ($b = 0; $b < count($matches[0]); $b++) {
+            if ($a === $b) {
                 continue;
             }
 
-            $a = $cols[0][$i];
-            $b = $cols[0][$j];
+            $value = $matches[0][$a];
+            $divisor = $matches[0][$b];
 
-            if (0 === $a % $b) {
-                $checksum += $a / $b;
+            if ($divisor % $value === 0) {
+                $sum += $divisor / $value;
             }
         }
     }
 }
 
-return $checksum;
+return $sum;
