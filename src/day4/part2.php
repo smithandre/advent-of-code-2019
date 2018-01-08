@@ -10,25 +10,18 @@ declare(strict_types=1);
 
 $input = getInput();
 
-return count(array_filter(explode("\n", $input), function ($passphrase) {
-    $words = explode(' ', $passphrase);
+$inputRow = explode("\n", $input);
+$total = 0;
 
-    for ($i = 0; $i < count($words); $i++) {
-        $currentWord = str_split($words[$i]);
-        sort($currentWord);
-        $checkArray = $words;
+foreach ($inputRow as $passPhrase) {
+    $passPhraseWords = explode(' ', $passPhrase);
+    array_walk($passPhraseWords, function (&$value, $key) {
+        $wordArray = str_split($value);
+        sort($wordArray);
+        $value = implode('', $wordArray);
+    });
 
-        array_splice($checkArray, $i, 1);
+    $total += (count($passPhraseWords) === count(array_unique($passPhraseWords)));
+}
 
-        foreach ($checkArray as $checkWord) {
-            $checkWord = str_split($checkWord);
-            sort($checkWord);
-
-            if ($checkWord === $currentWord) {
-                return false;
-            }
-        }
-    }
-
-    return true;
-}));
+return $total;
