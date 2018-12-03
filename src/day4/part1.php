@@ -1,6 +1,4 @@
 <?php
-
-declare(strict_types=1);
 /*
  * This file is part of the adventofcode project.
  *
@@ -8,13 +6,6 @@ declare(strict_types=1);
  * @copyright  Copyright (c) 2017
  */
 
+declare(strict_types=1);
+
 $input = getInput();
-
-$total = 0;
-
-foreach (explode("\n", $input) as $passPhrase) {
-    $array = explode(' ', $passPhrase);
-    $total += (count($array) === count(array_unique($array)));
-}
-
-return $total;

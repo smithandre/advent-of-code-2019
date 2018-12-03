@@ -1,7 +1,7 @@
 AdventOfCode Template
 =====================
 
-This is a simple template project for the [AdventOfCode](http://adventofcode.com/2017) project in PHP.
+This is a simple template project for the [AdventOfCode](http://adventofcode.com/2018) project in PHP.
 The goal of this template is to give people a simple way to test your code against the AdventOfCode samples,
 and an easy way to group and run your code
 

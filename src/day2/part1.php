@@ -8,12 +8,4 @@
 
 declare(strict_types=1);
 
-$input = explode("\n", getInput());
-$sum = 0;
-
-foreach ($input as $row) {
-    preg_match_all('!\d+!', $row, $matches);
-    $sum += (max($matches[0]) - min($matches[0]));
-}
-
-return $sum;
+$input = getInput();
