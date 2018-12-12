@@ -19,9 +19,11 @@ foreach ($input as $data) {
     $offset = explode(',', $rawData[1]);
     $size = explode('x', $rawData[2]);
     $claimData[$rawData[0]] = ['leftOffset' => $offset[0], 'topOffset' => $offset[1], 'width' => $size[0], 'height' => $size[1]];
+    $maxHeight = $maxHeight < $offset[1] + $size[1] ? $offset[1] + $size[1] : $maxHeight;
+    $maxWidth = $maxWidth < $offset[0] + $size[0] ? $offset[0] + $size[0] : $maxWidth;
 }
 
-$fabric = array_fill(0, 1000, array_fill(0, 1000, '.'));
+$fabric = array_fill(0, $maxWidth, array_fill(0, $maxHeight, '.'));
 
 foreach ($claimData as $claimId => $claimDetails) {
     $leftPos = $claimDetails['leftOffset'];
