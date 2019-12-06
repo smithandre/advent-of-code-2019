@@ -8,10 +8,4 @@
 
 declare(strict_types=1);
 
-$input = explode("\n", getInput());
-$sum = 0;
-array_walk($input, function ($value) use (&$sum) {
-    $sum += (int) $value;
-});
-
-return $sum;
+$input = getInput();
