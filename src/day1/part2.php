@@ -8,4 +8,19 @@
 
 declare(strict_types=1);
 
-$input = getInput();
+$input = explode("\n", getInput());
+
+$array = [];
+foreach ($input as $value) {
+    if (!empty($value)) {
+        $totalFuelNeeded = 0;
+        $moduleFuel = $totalFuelNeeded = floor($value / 3) - 2;
+        while ($moduleFuel > 0) {
+            $moduleFuel = floor($moduleFuel / 3) - 2;
+            $totalFuelNeeded = $moduleFuel > 0 ? $totalFuelNeeded + $moduleFuel : $totalFuelNeeded;
+        }
+        $array[] = $totalFuelNeeded;
+    }
+}
+
+return (int) array_sum($array);

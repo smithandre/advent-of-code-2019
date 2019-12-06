@@ -8,4 +8,13 @@
 
 declare(strict_types=1);
 
-$input = getInput();
+$input = explode("\n", getInput());
+
+$array = [];
+foreach ($input as $value) {
+    if (!empty($value)) {
+        $array[] = floor($value / 3) - 2 ;
+    }
+}
+
+return (int) array_sum($array);
